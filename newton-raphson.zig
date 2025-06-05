@@ -99,13 +99,13 @@ fn fxj(comptime T: type, x: T) T {
 }
 
 fn fx1j(comptime T: type, x: T) T {
-    return (@log(x) - 1.0) / (x * x);
+    return (1.0 - @log(x)) / (x * x);
 }
 
 pub fn main() !void {
     std.debug.print("NEWTON RAPHSON METHOD\n", .{});
 
-    const xs: []const f32 = &.{ 1, 0, 0.25, 2, 1, 1, 1, 0.5, 1, 3, 0.3 };
+    const xs: []const f32 = &.{ 1, 0, 0.25, 2, 1, 1, 1, 0.5, 1, 3, 0.33 };
 
     for (xs, 0..) |x, i| {
         const root = switch (i) {
